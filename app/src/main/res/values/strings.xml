@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">IntentsImpl</string>
+    <string name="bienvenidos">Bienvenido a mi información de contacto</string>
+    <string name="ubicando">Localizacion</string>
+    <string name="navegando">Acceso a la web</string>
+    <string name="contactando">Tlf. de contacto: +34617195034</string>
+    <string name="Boton1">Mostrar en mapa por coord.</string>
+    <string name="Boton2">Mostrar en mapa por direccion.</string>
+    <string name="Boton3">Acceder a la web</string>
+    <string name="Boton4">Buscar en Google</string>
+    <string name="Boton5">Llamar</string>
+    <string name="Boton6">Acceder a Contactos</string>
+    <string name="telef">748239748</string>
+</resources>
