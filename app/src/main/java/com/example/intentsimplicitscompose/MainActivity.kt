@@ -70,7 +70,7 @@ class MainActivity : ComponentActivity() {
     fun MyApp(modifier: Modifier = Modifier) {
         val context = LocalContext.current
         val selectedImageUri = remember { mutableStateOf<Uri?>(null) }
-        val photoUriState = remember { mutableStateOf<Uri?>(null) } // Para armazenar o URI da foto tirada
+        val photoUriState = remember { mutableStateOf<Uri?>(null) }
 
         val launchCallPhonePerm = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
             callPhonePerm.value = isGranted
@@ -84,7 +84,6 @@ class MainActivity : ComponentActivity() {
         val cameraLauncher = rememberLauncherForActivityResult(ActivityResultContracts.TakePicture()) { success ->
             if (success) {
                 Toast.makeText(context, "Foto tomada con éxito", Toast.LENGTH_SHORT).show()
-                // Registrar a foto no MediaStore para que apareça na galeria
                 photoUriState.value?.let { uri ->
                     val values = ContentValues().apply {
                         put(MediaStore.Images.Media.DISPLAY_NAME, "photo.jpg")
@@ -125,9 +124,8 @@ class MainActivity : ComponentActivity() {
                     .verticalScroll(rememberScrollState())
             ) {
                 Text(modifier = modifier.align(Alignment.CenterHorizontally).padding(vertical = 30.dp), text = stringResource(R.string.bienvenidos))
-
-                // Botones existentes (ubicando y navegando) se mantienen igual
                 Text(modifier = modifier.align(Alignment.CenterHorizontally).padding(vertical = 10.dp), text = stringResource(R.string.ubicando))
+
                 ElevatedButton(
                     modifier = modifier.padding(vertical = 10.dp).align(Alignment.CenterHorizontally),
                     elevation = ButtonDefaults.elevatedButtonElevation(5.dp),
@@ -168,10 +166,9 @@ class MainActivity : ComponentActivity() {
                     }
                 ) { Text(text = stringResource(R.string.Boton4)) }
 
-                // Nuevas funcionalidades
-                Text(modifier = modifier.align(Alignment.CenterHorizontally).padding(vertical = 30.dp), text = stringResource(R.string.contactando))
 
-                // Botón SMS
+
+                Text(modifier = modifier.align(Alignment.CenterHorizontally).padding(vertical = 30.dp), text = stringResource(R.string.contactando))
                 ElevatedButton(
                     modifier = modifier.align(Alignment.CenterHorizontally).padding(vertical = 10.dp),
                     elevation = ButtonDefaults.elevatedButtonElevation(5.dp),
@@ -183,7 +180,6 @@ class MainActivity : ComponentActivity() {
                     }
                 ) { Text(text = "Enviar SMS") }
 
-                // Botón Agenda
                 ElevatedButton(
                     modifier = modifier.align(Alignment.CenterHorizontally).padding(vertical = 10.dp),
                     elevation = ButtonDefaults.elevatedButtonElevation(5.dp),
@@ -194,7 +190,6 @@ class MainActivity : ComponentActivity() {
                     }
                 ) { Text(text = "Abrir Agenda") }
 
-                // Botón Galería con imagen
                 Row(
                     modifier = modifier.align(Alignment.CenterHorizontally).padding(vertical = 10.dp),
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -217,7 +212,6 @@ class MainActivity : ComponentActivity() {
                     }
                 }
 
-                // Botón Cámara
                 Column(
                     modifier = modifier.align(Alignment.CenterHorizontally).padding(vertical = 30.dp)
                 ) {
@@ -239,7 +233,6 @@ class MainActivity : ComponentActivity() {
                     ) { Text(text = "Abrir Cámara") }
                 }
 
-                // Botón existente de llamada
                 ElevatedButton(
                     modifier = modifier.align(Alignment.CenterHorizontally).padding(vertical = 10.dp),
                     elevation = ButtonDefaults.elevatedButtonElevation(5.dp),
@@ -250,7 +243,6 @@ class MainActivity : ComponentActivity() {
                     }
                 ) { Text(text = stringResource(R.string.Boton5)) }
 
-                // Novo botão para um intent implícito adicional: Compartilhar texto
                 ElevatedButton(
                     modifier = modifier.align(Alignment.CenterHorizontally).padding(vertical = 10.dp),
                     elevation = ButtonDefaults.elevatedButtonElevation(5.dp),
